@@ -26,7 +26,7 @@
         {{ cat.name }}
       </option>
     </select>
-
+    {{shelfSize}}
     <div class="flex flex-wrap justify-center">
       <div class="book-item" v-for="book in books" :key="book.key">
         <img
@@ -36,6 +36,7 @@
         />
         <div class="text-lg">{{ book.title }}</div>
         <div class="text-md font-light">{{ book.authors[0].name }}</div>
+        <div><button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" @click="add(book)">Add to Shelf</button></div>
       </div>
     </div>
   </div>
@@ -43,11 +44,13 @@
 
 <script lang="ts">
 import { computed, defineComponent, onMounted, Ref, ref } from "vue";
+import { Work } from "../models/books";
 import store from "../store";
 
 export default defineComponent({
   setup() {
     const books = computed(() => store.state.bookList);
+    const shelfSize = computed(() => store.state.shelf.length);
     const categories = [
       { id: "science_fiction", name: "Science Fiction" },
       { id: "love", name: "Love Stories" },
@@ -66,11 +69,17 @@ export default defineComponent({
       store.dispatch("loadBooklist", category);
     }
 
+    function add(book: Work) {
+      store.dispatch("addBookToShelf", book)
+    }
+
     return {
       books,
       categories,
       load,
-      currentCategory
+      add,
+      currentCategory,
+      shelfSize
     };
   },
 });

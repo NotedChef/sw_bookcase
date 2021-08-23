@@ -14,6 +14,7 @@ export default createStore({
         setBookList(state, list: Array<Work>) {
             state.bookList = list;
         },
+        addToShelf: (state, book:Work) => state.shelf.push(book),
         setError: (state, error: string) => state.error = error,
         setIsBusy: (state) => state.isBusy = true,
         clearIsBusy: (state) => state.isBusy = false
@@ -31,6 +32,9 @@ export default createStore({
             } finally {
                 commit("clearIsBusy")
             }
+        },
+        addBookToShelf({commit}, book:Work) {
+            commit("addToShelf", book);
         }
     }
 });
