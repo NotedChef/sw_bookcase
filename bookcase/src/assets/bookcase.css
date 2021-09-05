@@ -6,4 +6,13 @@
    @apply border border-solid m-2 p-2 border-gray-300 w-56 hover:bg-gray-50 hover:shadow-lg cursor-pointer
 }
 
+
 @tailwind utilities;
+
+a.btn {
+   @apply bg-blue-800 text-white p-2 rounded no-underline px-3 py-3
+}
+
+a.btn:hover {
+   @apply bg-blue-600
+}
