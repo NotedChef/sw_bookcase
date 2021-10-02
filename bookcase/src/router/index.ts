@@ -2,7 +2,7 @@
 
 import { createRouter, createWebHistory} from 'vue-router'
 import Library from '../views/Library.vue'
-import BookCase from '../views/BookCase.vue'
+import BookCase from '../views/Shelf.vue'
 
 const routes = [
   { path: '/', name: 'BookCase', component: BookCase },

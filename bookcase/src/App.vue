@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto bg-white p-2 font-sans">
     <header>
-      <h1>My Bookcase</h1>
+      <h1>Bookcase App</h1>
       <ul class="flex list-none ml-0">
         <li class=" ml-0 mx-1">
           <router-link to="/" class="btn">Home</router-link>

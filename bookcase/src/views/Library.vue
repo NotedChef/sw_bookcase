@@ -15,27 +15,19 @@
     </div>
     <div class="flex flex-wrap justify-center" v-if="!isLoading">
       <div class="book-item flex flex-col justify-between" v-for="book in books" :key="book.key">
-        <div style>
-          <img
-            :src="`//covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`"
-            :alt="book.title"
-            class="min-w-full max-h-72"
-          />
-        </div>
+        <book :book="book"></book>
         <div class="flex flex-col">
-          <div class="text-lg truncate">{{ book.title }}</div>
-          <div class="text-md font-light">{{ book.authors[0].name }}</div>
           <div class="self-center justify-self-end">
             <button
               v-if="!isBookOnShelf(book)"
-              class="ring-4 ring-transparent ring-green-100 bg-green-500 hover:bg-green-600 text-semibold text-white text-lg py-2 px-4 mt-3 border-0 rounded color-white"
-              @click="add(book)"
+              class="btn btn-add"
+               @click="add(book)"
             >Add to Shelf</button>
             <button
               v-else
               @click="remove(book)"
-              class="ring-4 ring-transparent ring-red-100 bg-red-500 hover:bg-red-600 text-semibold text-white text-lg py-2 px-4 mt-3 border-0 rounded color-white"
-            >Remove from Shelf</button>
+              class="btn btn-remove"
+               >Remove from Shelf</button>
           </div>
         </div>
       </div>
@@ -47,8 +39,12 @@
 import { computed, defineComponent, onMounted, Ref, ref } from "vue";
 import { Work } from "../models/books";
 import store from "../store";
+import Book from "../components/book.vue";
 
 export default defineComponent({
+  components: {
+    Book
+  },
   setup() {
     const books = computed(() => store.state.bookList);
     const shelfSize = computed(() => store.state.shelf.length);

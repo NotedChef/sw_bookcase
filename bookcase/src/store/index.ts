@@ -51,6 +51,5 @@ export default createStore({
         removeBookFromShelf({ commit }, book: Work) {
             commit("removeFromShelf", book);
         }
-
     }
 });
