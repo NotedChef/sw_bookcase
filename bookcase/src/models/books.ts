@@ -1,5 +1,6 @@
 
 export interface Author {
+    url: string;
     key: string;
     name: string;
 }
@@ -27,23 +28,23 @@ export interface Availability {
 }
 
 export interface Work {
-    key: string;
+    key?: string;
     title: string;
-    edition_count: number;
+    edition_count?: number;
     cover_id: number;
-    cover_edition_key: string;
+    cover_edition_key?: string;
     subject: string[];
-    ia_collection: string[];
-    lendinglibrary: boolean;
-    printdisabled: boolean;
-    lending_edition: string;
-    lending_identifier: string;
+    ia_collection?: string[];
+    lendinglibrary?: boolean;
+    printdisabled?: boolean;
+    lending_edition?: string;
+    lending_identifier?: string;
     authors: Author[];
     first_publish_year?: any;
-    ia: string;
-    public_scan: boolean;
-    has_fulltext: boolean;
-    availability: Availability;
+    ia?: string;
+    public_scan?: boolean;
+    has_fulltext?: boolean;
+    availability?: Availability;
 }
 
 export interface Response {
@@ -54,5 +55,15 @@ export interface Response {
     works: Work[];
     ebook_count: number;
 }
+
+export interface Book {
+    url: string;
+    key: string;
+    title: string;
+    authors: Author[];
+    subjects: string[];
+    cover: any;
+}
+
 
 

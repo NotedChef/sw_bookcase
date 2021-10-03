@@ -73,7 +73,8 @@ export default defineComponent({
     }
 
     function isBookOnShelf(book: Work) {
-      return store.state.shelf.find((w) => w.key === book.key);
+      const result = store.state.shelf.findIndex((w) => w.cover_edition_key === book.cover_edition_key);
+      return result > -1;
     }
 
     function add(book: Work) {
